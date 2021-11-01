@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class ItemServiceImpl : ItemService {
 
-    @Autowired private lateinit var service : ItemPersistenceService
+    @Autowired lateinit var service : ItemPersistenceService
 
     override fun createAndPersistItem(name: String): Item {
         val newItem = Item(name, null)

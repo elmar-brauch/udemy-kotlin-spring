@@ -1,7 +1,6 @@
 package de.bsi.itemapi
 
-import de.bsi.itemapi.model.Item
-import de.bsi.itemapi.service.ItemPersistenceService
+import de.bsi.itemapi.service.ItemService
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -10,8 +9,8 @@ class ItemApiApplication
 
 fun main(args: Array<String>) {
 	val context = runApplication<ItemApiApplication>(*args)
-	val bean = context.getBean(ItemPersistenceService::class.java)
-	val id = bean.saveItem(Item("Ball", null))
-	println("Item created and found: " + bean.findItem(id))
-	// context.stop()
+	val bean : ItemService? = context.getBean("itemService_2") as? ItemService
+	val item = bean?.createAndPersistItem("Stern")
+	println("Item created: $item")
+	//context.stop()
 }

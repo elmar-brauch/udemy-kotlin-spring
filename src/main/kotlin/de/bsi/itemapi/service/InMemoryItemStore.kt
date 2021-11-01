@@ -1,9 +1,11 @@
 package de.bsi.itemapi.service
 
 import de.bsi.itemapi.model.Item
+import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Service
 
 @Service
+@Primary
 class InMemoryItemStore(private val idGenerator: IdGenerator) : ItemPersistenceService {
 
     internal val items = mutableListOf<Item>()
@@ -22,5 +24,9 @@ class InMemoryItemStore(private val idGenerator: IdGenerator) : ItemPersistenceS
             deleteItem(item.id!!)
         items.add(item)
         return item.id!!
+    }
+
+    private fun cleanStore() {
+        items.clear()
     }
 }
