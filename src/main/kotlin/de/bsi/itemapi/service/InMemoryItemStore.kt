@@ -1,11 +1,10 @@
 package de.bsi.itemapi.service
 
 import de.bsi.itemapi.model.Item
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class InMemoryItemStore(@Autowired private val idGenerator: IdGenerator) : ItemPersistenceService {
+class InMemoryItemStore(private val idGenerator: IdGenerator) : ItemPersistenceService {
 
     internal val items = mutableListOf<Item>()
 
