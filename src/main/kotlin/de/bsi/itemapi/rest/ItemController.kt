@@ -2,14 +2,13 @@ package de.bsi.itemapi.rest
 
 import de.bsi.itemapi.model.Item
 import de.bsi.itemapi.service.ItemService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/item")
-class ItemController(@Autowired private val service: ItemService) {
+class ItemController(private val service: ItemService) {
 
     @GetMapping
     fun getItemBy(@RequestParam id: String): ResponseEntity<Item> {
