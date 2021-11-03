@@ -4,7 +4,7 @@ import de.bsi.itemapi.service.ItemService
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["de.bsi"])
 class ItemApiApplication
 
 fun main(args: Array<String>) {
