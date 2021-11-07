@@ -2,6 +2,9 @@ package de.bsi.itemapi.rest
 
 import de.bsi.itemapi.model.Item
 import de.bsi.itemapi.service.ItemService
+import de.bsi.userapi.model.User
+import de.bsi.userapi.service.UserService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -36,4 +39,18 @@ class ItemController(private val service: ItemService) {
 
     @ExceptionHandler(ConstraintViolationException::class)
     fun handleConstraintViolation(ex: ConstraintViolationException) = ResponseEntity(ex.message, HttpStatus.BAD_REQUEST)
+
+
+    @Autowired lateinit var userService: UserService
+
+    @PostMapping("/{itemId}/user/{userId}")
+    fun assignItemToUser(@PathVariable itemId: String, @PathVariable userId: Int) : ResponseEntity<User> {
+        val itemToBeAdded = service.findItemById(itemId)
+        val optUser = userService.findUserBy(userId)
+        if (itemToBeAdded != null && optUser.isPresent) {
+            optUser.get().ownedItems.add(itemToBeAdded)
+            return ResponseEntity.ok(optUser.get())
+        }
+        return ResponseEntity.notFound().build()
+    }
 }

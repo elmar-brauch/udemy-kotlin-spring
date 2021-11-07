@@ -1,6 +1,4 @@
-package de.bsi.userapi;
-
-import de.bsi.itemapi.model.Item;
+package de.bsi.userapi.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +8,7 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
-    private List<Item> ownedItems = new ArrayList<>();
+    private List<Object> ownedItems = new ArrayList<>();
     
     public int getId() {
         return id;
@@ -36,11 +34,11 @@ public class User {
         this.lastName = lastName;
     }
     
-    public List<Item> getOwnedItems() {
+    public List<Object> getOwnedItems() {
         return ownedItems;
     }
     
-    public void setOwnedItems(List<Item> ownedItems) {
+    public void setOwnedItems(List<Object> ownedItems) {
         this.ownedItems = ownedItems;
     }
     
