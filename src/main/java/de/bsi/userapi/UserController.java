@@ -21,7 +21,7 @@ public class UserController {
     
     @Autowired private ItemService itemService;
     
-    private List<User> users = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
     
     @PostMapping
     public ResponseEntity<Void> createUser(@RequestBody User newUser) {
@@ -31,8 +31,8 @@ public class UserController {
     
     @PostMapping("/{userId}/item")
     public ResponseEntity<User> addItemsToUser(
-            @PathVariable int userId,
-            @RequestBody List<String> itemIds) {
+        @PathVariable int userId,
+        @RequestBody List<String> itemIds) {
         var optionalUser = users.stream().filter(u -> userId == u.getId()).findFirst();
         if (optionalUser.isPresent()) {
             optionalUser.get().getOwnedItems().addAll(findItems(itemIds));
