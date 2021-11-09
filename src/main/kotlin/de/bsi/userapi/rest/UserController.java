@@ -27,8 +27,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<User> getUserById(@RequestParam int id) {
         var optUser = service.findUserBy(id);
-        return optUser.map(ResponseEntity::ok)
-            .orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.of(optUser);
     }
     
 }
