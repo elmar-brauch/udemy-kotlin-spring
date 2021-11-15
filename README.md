@@ -1,15 +1,17 @@
-# Read Me First
-This code is part of Udemy course TODO.
+# Read Me
 
-TODO Write how to use it.
+Dieser Code gehört zum Udemy Kurs REST-Microservices mit Kotlin und Spring.
+https://www.udemy.com/course/api-und-kotlin/?referralCode=DDCE6B8332EAB4AEC664
 
-TODO Write how packages are mapped to course chapters
+Um den Code auszuführen, muss das Git Repository ausgecheckt (gecloned) 
+und in IntelliJ importiert werden.
 
-TODO Link to Swagger-UI: http://localhost:8080/swagger-ui/index.html
-Doku zu Swagger-UI: https://springfox.github.io/springfox/docs/current/
+Der Code ist wie folgt strukturiert:
+* src/main/kotlin/de/bsi/basics/kotlin enthält Kotlin Klassen passend zum 2. Abschnitt des Kurses. Diese Klassen habe alle ein main-Methode, um den Code in der jeweiligen Klasse auszuführen.
+* src/main/kotlin/de/bsi/itemapi enthält den Code zu den Kapiteln über Spring. ItemApiApplication ist die Kotlin Klasse mit der main-Methode zum Starten der Spring Boot Anwendung.
+* src/main/kotlin/de/bsi/userapi enthält Java Klassen, um zu zeigen, dass Kotlin und Java Code in einem Projekt gemischt werden können.
 
-<dependency>
-    <groupId>io.springfox</groupId>
-    <artifactId>springfox-boot-starter</artifactId>
-    <version>3.0.0</version>
-</dependency>
+Das Swagger-UI der Spring Boot Anwendung ist über diesen Link erreichbar:
+http://localhost:8080/swagger-ui/index.html
+
+Weiterführende Erklärungen findet ihr in den Udemy Videos.
