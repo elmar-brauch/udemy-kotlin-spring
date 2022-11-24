@@ -1,7 +1,7 @@
 package de.bsi.itemapi.model
 
+import jakarta.validation.constraints.Pattern
 import java.time.LocalDate
-import javax.validation.constraints.Pattern
 
 data class Item(
     @field:Pattern(regexp = "[a-zA-Z]+") val name: String,

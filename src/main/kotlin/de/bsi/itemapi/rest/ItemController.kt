@@ -4,14 +4,14 @@ import de.bsi.itemapi.model.Item
 import de.bsi.itemapi.service.ItemService
 import de.bsi.userapi.model.User
 import de.bsi.userapi.service.UserService
+import jakarta.validation.ConstraintViolationException
+import jakarta.validation.Valid
+import jakarta.validation.constraints.Size
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
-import javax.validation.ConstraintViolationException
-import javax.validation.Valid
-import javax.validation.constraints.Size
 
 @RestController
 @RequestMapping("/item")
