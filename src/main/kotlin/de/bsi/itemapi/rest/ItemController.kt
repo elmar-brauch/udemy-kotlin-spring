@@ -9,6 +9,7 @@ import jakarta.validation.Valid
 import jakarta.validation.constraints.Size
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
+import org.springframework.http.ProblemDetail
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -19,11 +20,15 @@ import org.springframework.web.bind.annotation.*
 class ItemController(private val service: ItemService) {
 
     @GetMapping
-    fun getItemBy(@Size(min = 3) @RequestParam id: String): ResponseEntity<Item> {
+    fun getItemBy(@Size(min = 3) @RequestParam id: String): ResponseEntity<Any> {
         val item = service.findItemById(id)
         if (item != null)
             return ResponseEntity.ok(item)
-        return ResponseEntity.notFound().build()
+
+        var pd = ProblemDetail.forStatus(404)
+        pd.title = "Item not found"
+        pd.detail = "Item with id $id not found."
+        return ResponseEntity.of(pd).build()
     }
 
     @PostMapping
