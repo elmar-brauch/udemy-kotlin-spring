@@ -5,17 +5,17 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0</version>
+		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>de.bsi</groupId>
 	<artifactId>item-api</artifactId>
-	<version>0.2</version>
+	<version>0.3</version>
 	<name>item-api</name>
 	<description>Demo project for Kotlin with Spring</description>
 	<properties>
 		<java.version>17</java.version>
-		<kotlin.version>1.7.21</kotlin.version>
+		<kotlin.version>1.7.22</kotlin.version>
 		<start-class>de.bsi.itemapi.ItemApiApplicationKt</start-class>
 	</properties>
 	<dependencies>
@@ -77,6 +77,10 @@
 		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 		<plugins>
+			<plugin>
+				<groupId>org.graalvm.buildtools</groupId>
+				<artifactId>native-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
