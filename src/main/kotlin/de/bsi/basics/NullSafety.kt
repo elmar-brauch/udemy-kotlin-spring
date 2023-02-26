@@ -1,4 +1,4 @@
-package de.bsi.basics.kotlin
+package de.bsi.basics
 
 fun main() {
     val test = NullSafety("Compiler does not allow null here!", "String? can be null")

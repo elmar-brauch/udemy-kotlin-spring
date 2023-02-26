@@ -1,4 +1,4 @@
-package de.bsi.basics.kotlin
+package de.bsi.basics
 
 fun main() {
     val mutableList = mutableListOf<String>()

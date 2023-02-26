@@ -1,4 +1,4 @@
-package de.bsi.basics.kotlin
+package de.bsi.basics
 
 // Static main method to start the program
 fun main() {

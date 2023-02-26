@@ -1,4 +1,4 @@
-package de.bsi.basics.kotlin
+package de.bsi.basics
 
 import java.io.IOException
 
