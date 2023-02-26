@@ -6,12 +6,10 @@ val names = listOf("Ardbeg", "Lagavulin", "Jim Beam", "Teeling", "Jameson", "Joh
 
 data class Whisky(val name: String, val length: Int)
 
-val generate: (String) -> Whisky = { name -> Whisky(name, name.length) }
-
 fun demoMapAndToList(): List<Whisky> {
     // Map all Strings to Whisky objects and collect in List.
     val whiskies = names.stream()
-        .map(generate)
+        .map { name -> Whisky(name, name.length) }
         .toList()
     println(whiskies)
     return whiskies
@@ -19,26 +17,16 @@ fun demoMapAndToList(): List<Whisky> {
 
 fun main() {
     val whiskies = demoMapAndToList()
-
     demoSortedAndForEach(whiskies)
-
     demoFilterAndCount(whiskies)
-
     demoPeekAndFindFirst(whiskies)
-
     demoMatch(whiskies)
-
     demoGroupBy(whiskies)
-
     demoParallelProcessing(whiskies)
 }
 
 fun demoSortedAndForEach(whiskies: List<Whisky>) {
     // Sort objects in Stream and consume each.
-    val compareNames: (Whisky, Whisky) -> Int = { a, b -> a.name.compareTo(b.name) }
-    whiskies.stream()
-        .sorted(compareNames)
-        .forEach(::println)
     whiskies.stream()
         .sorted { a, b -> b.length - a.length }
         .forEach { println(it) }
@@ -59,7 +47,7 @@ fun demoPeekAndFindFirst(whiskies: List<Whisky>) {
         .peek { _ -> counter++ }
         .filter { it.name.contains("J") }
         .findFirst()
-        .ifPresent { whisky -> println("Found $whisky at position $counter") }
+        .ifPresent { whisky -> println("Found ${whisky.name} at position $counter") }
 }
 
 fun demoMatch(whiskies: List<Whisky>) {
@@ -75,12 +63,12 @@ fun demoMatch(whiskies: List<Whisky>) {
 fun demoGroupBy(whiskies: List<Whisky>) {
     // Group Whiskies by attribute
     val groupsAsMap = whiskies.stream()
-        .collect(Collectors.groupingBy(Whisky::length))
+        .collect(Collectors.groupingBy { it.length })
     groupsAsMap.forEach(::println)
 }
 
 fun demoParallelProcessing(whiskies: List<Whisky>) {
     whiskies.stream().parallel().forEach(::println)
     // 10 times bigger Stream.
-    IntRange(0,10).flatMap { _ -> whiskies }.stream().parallel().forEach(::println)
+    IntRange(0,10).flatMap { _ -> whiskies }.parallelStream().forEach(::println)
 }
